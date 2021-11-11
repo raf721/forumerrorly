@@ -1,0 +1,19 @@
+{% extends "fe_app/base.html" %}
+
+{% block content %}
+
+    <p>Threads</p>
+
+    <ul>
+        {% for thread in threads %}
+            <li>
+                <a href="{% url 'fe_app:thread' thread.id %}">{{ thread }}</a>
+            </li>
+        {% empty %}
+            <li>No threads have been created yet. Start a thread!</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'fe_app:new_thread' %}">Add a new topic</a>
+
+{% endblock content %}

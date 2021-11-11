@@ -1,0 +1,23 @@
+{% extends "fe_app/base.html" %}
+
+{% block content %}
+
+    <p>Thread: {{ thread }}</p>
+
+    <p>Posts:</p>
+    <p>
+        <a href="{% url 'fe_app:new_post' thread.id %}">Add new post</a>
+    </p>
+
+    <ul>
+    {% for post in posts %}
+        <li>
+            <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ post.text|linebreaks }}</p>
+        </li>
+    {% empty %}
+        <li>No posts for this thread have been created yet. Make a post!</li>
+    {% endfor %}
+    </ul>
+
+{% endblock content %}

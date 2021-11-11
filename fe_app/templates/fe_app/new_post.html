@@ -1,0 +1,14 @@
+{% extends "fe_app/base.html" %}
+
+{% block content %}
+
+    <p><a href="{% url 'fe_app:thread' thread.id %}">{{ thread }}</a></p>
+
+    <p>Add a new post:</p>
+    <form action="{% url 'fe_app:new_post' thread.id %}" method= 'POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="Submit">Add post</button>
+    </form>
+
+{% endblock content %}
