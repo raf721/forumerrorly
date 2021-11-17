@@ -1,12 +1,20 @@
 {% extends "fe_app/base.html" %}
 
 {% block content %}
-
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    a{
+        text-decoration: none;
+        color : inherit
+    }
+</style>
     <p>Thread: {{ thread }}</p>
 
     <p>Posts:</p>
     <p>
-        <a href="{% url 'fe_app:new_post' thread.id %}">Add new post</a>
+        <button><a href="{% url 'fe_app:new_post' thread.id %}">Add new post</a></button>
     </p>
 
     <ul>
@@ -19,5 +27,6 @@
         <li>No posts for this thread have been created yet. Make a post!</li>
     {% endfor %}
     </ul>
-
+</head>
+</html>
 {% endblock content %}

@@ -1,7 +1,19 @@
 {% extends "fe_app/base.html" %}
 
 {% block content %}
-
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    a{
+        text-decoration: none;
+        color : #2714ED
+    }
+    a.bottom{
+        text-decoration: none;
+        color : inherit
+    }
+</style>
     
     <h1><b>Threads</b></h1>
     <ul>
@@ -14,6 +26,8 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'fe_app:new_thread' %}">Add a new topic</a>
+    <button><a href="{% url 'fe_app:new_thread' %}" class = "bottom">Add a new topic</a></button>
 
+</head>
+</html>
 {% endblock content %}
