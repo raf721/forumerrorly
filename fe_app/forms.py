@@ -15,3 +15,9 @@ class PostForm(forms.ModelForm):
         fields = ['text']
         labels = {'text': 'Post:'}
         widgets = {'text': forms.Textarea(attrs={'cols': 80})}   # use HTML widget for text box
+
+"""class CommentForm(forms.ModelForm):
+    Allows users to create a new comment.
+
+    class Meta:
+        model = Comment"""

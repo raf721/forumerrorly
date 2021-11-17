@@ -49,15 +49,10 @@ body{
         <p>a forum of errors created by Team Error</p>
     </div>
     <div class="navbar">
-        <a href="#">Home</a>
-        <a href="#" class="right">Logout</a>
+        <a href="{% url 'fe_app:threads' %}">Home</a>
+        <a href="{% url 'fe_app:index' %}" class="right">Logout</a>
       </div>
 </body>
-
-<h1>
-    <a href="{% url 'fe_app:index' %}">forumerrorly</a> -
-    <a href="{% url 'fe_app:threads' %}">Threads</a>
-</h1>
 
 </html>
 
