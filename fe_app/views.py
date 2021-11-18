@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Thread
+from .models import Thread, Post
 from .forms import ThreadForm, PostForm
 
 def index(request):
@@ -50,3 +50,20 @@ def new_post(request, thread_id):
     
     context = {'thread': thread, 'form': form}
     return render(request, 'fe_app/new_post.html', context)
+
+def edit_post(request, post_id):
+    """Edit an existing post."""
+    post = Post.objects.get(id=post_id)
+    thread = post.thread
+
+    if request.method != 'POST':
+        form = PostForm(instance=post)  # auto fill with current entry
+    else:
+        form = PostForm(instance=post, data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('fe_app:thread', thread_id=thread.id)
+    
+    context = {'post': post, 'thread': thread, 'form': form}
+    return render(request, 'fe_app/edit_post.html', context)

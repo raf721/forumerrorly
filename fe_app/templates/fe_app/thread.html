@@ -22,6 +22,9 @@
         <li>
             <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
             <p>{{ post.text|linebreaks }}</p>
+            <p>
+                <a href="{% url 'fe_app:edit_post' post.id %}">Edit post</a>
+            </p>
         </li>
     {% empty %}
         <li>No posts for this thread have been created yet. Make a post!</li>
