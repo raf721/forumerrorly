@@ -3,8 +3,8 @@
 {% block content %}
 
     <p><a href="{% url 'fe_app:thread' thread.id %}">{{ thread }}</a></p>
-    <p>Edit post:</p>
 
+    <p>Edit post:</p>
     <form action="{% url 'fe_app:edit_post' post.id %}" method='post'>
         {% csrf_token %}
         {{ form.as_p }}
