@@ -51,11 +51,13 @@ body{
     <div class="navbar">
         {% if user.is_authenticated %}
           <a href="{% url 'fe_app:threads' %}">Home</a>
-          <a href="">Hello, {{user.username}}</a>
-        {% else %}
-          <a href="">Home</a>
-          <a href="{% url 'users:login' %}">Login</a>
+          <a src="">Hello, {{user.username}}</a>
           <a href="{% url 'users:logout' %}" class="right">Logout</a>
+        {% else %}
+          <a src="">Home</a>
+          <a href="{% url 'users:login' %}">Login</a>
+          <a href="{% url 'users:register' %}">Register</a>
+          <a src="" class="right">Logout</a>
         {% endif %}
       </div>
 </body>
