@@ -25,7 +25,7 @@ def register(request):
     authenticated_user = authenticate(username=new_user.username,
     password=request.POST['password1'])
     login(request, authenticated_user)
-    return HttpResponseRedirect(reverse('learning_logs:index'))
+    return HttpResponseRedirect(reverse('users:login'))
     
  context = {'form': form}
  return render(request, 'users/register.html', context)
