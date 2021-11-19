@@ -54,10 +54,10 @@ body{
           <a href="{% url 'users:login' %}" class="right">Logout</a>
           <a href="{% url 'users:register' %}">Register</a>
         {% else %}
-          <a href="{% url 'users:register' %}">Register</a>
-          <a href="{% url 'users:login' %}">Home</a>
+          <a src="">Home</a>
+          <a href="{% url 'users:login' %}">Login</a>
+          <a src="" class="right">Logout</a>
         {% endif %}
-        
       </div>
 </body>
 
