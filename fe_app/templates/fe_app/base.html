@@ -49,8 +49,12 @@ body{
         <p>a forum of errors created by Team Error</p>
     </div>
     <div class="navbar">
-        <a href="{% url 'fe_app:threads' %}">Home</a>
-        <a href="{% url 'fe_app:index' %}" class="right">Logout</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'fe_app:threads' %}">Home</a>
+        {% else %}
+          <a href="">Home</a>
+        {% endif %}
+        <a href="{% url 'users:login' %}" class="right">Logout</a>
       </div>
 </body>
 

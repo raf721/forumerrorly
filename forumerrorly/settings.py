@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # our apps!
-    'fe_app',
+    'fe_app', 'users',
 
     # default Django apps
     'django.contrib.admin',
