@@ -26,12 +26,12 @@ class Post(models.Model):
         """Return a string of the model. Preview is limited to first 50 chars of post."""
         return f"{self.text[:50]}..." if len(self.text) > 50 else f"{self.text}"    # only shows ellipsis if post > 50 chars
 
-"""class Comment(models.Model):
-    User comments under post
-    post = models.ForeignKey(Post, on_delete=models.CASCADE) # connects comment to post, deletes entire comment
+class Comment(models.Model):
+    # User comments under post
+    post = models.ForeignKey(Post, on_delete=models.CASCADE) # connects comment to post, deletes all comments
     text = models.TextField() # no char limit for comments
     date_added = models.DateTimeField(auto_now_add=True) # shows timestamp for comment
 
     def __str__(self):
-        Return a string of the model. Preview is limited to first 50 chars of post.
+        # Return a string of the model. Preview is limited to first 50 chars of comment.
         return f"{self.text[:50]}..." if len(self.text) > 50 else f"{self.text}"    # only shows ellipsis if post > 50 chars"""

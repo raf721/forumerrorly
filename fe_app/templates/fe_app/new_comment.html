@@ -1,0 +1,24 @@
+{% extends "fe_app/base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    a{
+        text-decoration: none;
+        color : #2714ED
+    }
+</style>
+    <p><a href="{% url 'fe_app:post' post.id %}">{{ post }}</a></p>
+
+    <p>Add comment:</p>
+    <form action="{% url 'fe_app:new_comment' post.id %}" method= 'POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="Submit">Add comment</button>
+    </form>
+</head>
+</html>
+{% endblock content %}
