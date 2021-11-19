@@ -52,7 +52,7 @@ def new_post(request, thread_id):
     context = {'thread': thread, 'form': form}
     return render(request, 'fe_app/new_post.html', context)
 
-def new_comment(request, post_id):
+def new_comment(request, post_id,thread_id):
     """Add a new comment to a thread."""
     # thread = Thread.objects.get(id=thread_id)
     post = Post.objects.get(id=post_id)
