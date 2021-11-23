@@ -15,9 +15,16 @@ def threads(request):
 def thread(request, thread_id):
     """A single thread and all related posts."""
     thread = Thread.objects.get(id=thread_id)
-    posts = thread.post_set.order_by('-date_added')  # get all posts under thread
+    posts = thread.post_set.order_by('date_added')  # get all posts under thread (oldest on top)
     context = {'thread': thread, 'posts': posts}
     return render(request, 'fe_app/thread.html', context)
+
+def post(request, post_id):
+    """A single post and all related comments. (aka Post View!)"""
+    post = Post.objects.get(id=post_id)
+    comments = post.comment_set.order_by('date_added')
+    context = {'post': post, 'comments': comments}
+    return render(request, 'fe_app/post.html', context)
 
 def new_thread(request):
     """Add a new thread."""
@@ -36,7 +43,7 @@ def new_thread(request):
 def new_post(request, thread_id):
     """Add a new post to a thread."""
     thread = Thread.objects.get(id=thread_id)
-    # comments = thread.comment_set.order_by('-date_added')  # get all comments under thread
+    comments = thread.comment_set.order_by('date_added')  # get all comments under thread
 
     if request.method != 'POST':
         form = PostForm()   # no data input, so make blank post
@@ -52,10 +59,10 @@ def new_post(request, thread_id):
     context = {'thread': thread, 'form': form}
     return render(request, 'fe_app/new_post.html', context)
 
-def new_comment(request, post_id,thread_id):
+def new_comment(request, post_id): #, thread_id):
     """Add a new comment to a thread."""
     # thread = Thread.objects.get(id=thread_id)
-    post = Post.objects.get(id=post_id)
+    post = Post.objects.get(id=post_id)     # ERROR HERE
 
     if request.method != 'POST':
         form = CommentForm()   # no data input, so make blank comment
@@ -64,13 +71,13 @@ def new_comment(request, post_id,thread_id):
 
         if form.is_valid():
             new_comment = form.save(commit=False)
-            new_comment.thread = thread
+            # new_comment.thread = thread
             new_comment.post = post
             new_comment.save()
             return redirect('fe_app:thread', thread_id=thread_id)   # redirects to thread of post where comment was added
     
-    context = {'thread': thread, 'post': post, 'form': form}
-    return render(request, 'fe_app/new_comment.html', context)
+    context = {'post': post, 'form': form}
+    return render(request, 'fe_app/new_comment.html', context)  # ERROR HERE
 
 def edit_post(request, post_id):
     """Edit an existing post."""

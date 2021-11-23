@@ -11,7 +11,7 @@
         color : #2714ED
     }
 </style>
-    <p><a href="{% url 'fe_app:thread' thread.id %}">{{ thread }}</a></p>
+    <p><a href="{% url 'fe_app:thread' thread.id %}">{{ thread }}</a></p>   <!--Send info back to thread-->
 
     <p>Add a new post:</p>
     <form action="{% url 'fe_app:new_post' thread.id %}" method= 'POST'>
