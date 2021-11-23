@@ -10,9 +10,11 @@
         color : inherit
     }
 </style>
-    <p>Thread: {{ thread }}</p>
+    <p>Thread: {{ post.thread }}</p>
 
-    <p>Posts:</p>
+    <p>Post:</p>
+    <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
+    <p>{{ post.text|linebreaks }}</p>
     <p>
         <button><a href="{% url 'fe_app:new_comment' post.id %}">Add new comment</a></button>
     </p>
@@ -22,14 +24,6 @@
         <li>
             <p>{{ comment.date_added|date:'M d, Y H:i' }}</p>
             <p>{{ comment.text|linebreaks }}</p>
-            <!-- 
-            <p>
-                <a href="{% url 'fe_app:edit_post' post.id %}">Edit post</a>
-            </p>
-            <p>
-                <a href="{% url 'fe_app:new_comment' post.id %}">Add comment</a>
-            </p>
-            -->
         </li>
     {% empty %}     <!--Else if no comments on post, display a message-->
         <li>No comments for this thread have been created yet. Make a comment! NOW! >:)</li>
