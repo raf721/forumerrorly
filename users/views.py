@@ -1,8 +1,19 @@
+from django.contrib.admin.options import csrf_protect_m
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.views import PasswordContextMixin
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import logout, login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordResetForm, UserCreationForm
+from django.conf import settings
+from django.core.mail import send_mail
+from django.urls.base import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
+from django.conf import settings
+from django.core.mail import send_mail
 
 # Create your views here.
 def logout_view(request):
@@ -29,3 +40,4 @@ def register(request):
     
  context = {'form': form}
  return render(request, 'users/register.html', context)
+
