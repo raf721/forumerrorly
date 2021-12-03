@@ -11,7 +11,7 @@
         color : #2714ED
     }
 </style>
-    <p><a href="{% url 'fe_app:post' post.id %}">{{ post }}</a></p>
+    <p><a href="{% url 'fe_app:post' post.id %}">{{ post }}</a></p>    <!--Send info back to post-->
 
     <p>Add comment:</p>
     <form action="{% url 'fe_app:new_comment' post.id %}" method= 'POST'>

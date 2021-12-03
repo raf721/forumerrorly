@@ -28,6 +28,16 @@
             <p>
                 <a href="{% url 'fe_app:new_comment' post.id %}">Add comment</a>
             </p>
+
+            <!--Display all comments under corresponding post-->
+            <ul> 
+            {% for comment in post.comment_set.all %}
+                <li>
+                    <p>{{ comment.date_added|date:'M d, Y H:i' }}</p>
+                    <p>{{ comment.text|linebreaks }}</p>
+                </li>
+            {% endfor %}
+            </ul>
         </li>
     {% empty %}
         <li>No posts for this thread have been created yet. Make a post!</li>
