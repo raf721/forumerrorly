@@ -51,7 +51,8 @@ body{
     <div class="navbar">
           <a href="{% url 'fe_app:threads' %}">Home</a>
           <a href="{% url 'users:login' %}" class="right">Logout</a>
-    </div>
+          <a href="{% url 'users:password_reset_form' %}" class="right">Reset Password</a>
+      </div>
 </body>
 
 </html>
