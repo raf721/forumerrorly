@@ -21,7 +21,7 @@ class Post(models.Model):
     class Meta:
         # Extra information for managing Post model.
     """
-
+    
     def __str__(self):
         """Return a string of the model. Preview is limited to first 50 chars of post."""
         return f"{self.text[:50]}..." if len(self.text) > 50 else f"{self.text}"    # only shows ellipsis if post > 50 chars

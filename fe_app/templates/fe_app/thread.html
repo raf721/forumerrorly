@@ -28,6 +28,9 @@
             <p>
                 <a href="{% url 'fe_app:new_comment' post.id %}">Add comment</a>
             </p>
+            <p>
+                <a href="{% url 'fe_app:edit_comment' post.id %}">Edit comment</a>
+            </p>
 
             <!--Display all comments under corresponding post-->
             <ul> 
